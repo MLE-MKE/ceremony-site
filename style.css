@@ -187,35 +187,31 @@ margin-top: -3vw;
 /* Timeline */
 .timeline {
   list-style: none;
-  margin: 10px auto;
-  padding: 0;
-  max-width: 400px;
+  padding: 0 18px 14px;
+  margin: 6px auto;
+  max-width: 560px;
   border-top: 1px solid #b9a7d8;
   border-bottom: 1px solid #b9a7d8;
-  display: grid;
-  justify-items: center;   /* centers each row */
-  row-gap: 12px;
-  text-align: center;
+  text-align: center;       /* centers the block */
+  display: inline-block;    /* allows centering in parent */
 }
 
 .timeline li {
-  display: grid;
-  grid-template-columns: auto auto; /* time + event */
-  column-gap: 12px;
+  display: flex;
+  justify-content: center;  /* centers each line as a unit */
+  gap: 16px;
   align-items: center;
+  padding: 12px 0;
   border-bottom: 1px solid #b9a7d8;
-  padding: 10px 0;
-  width: fit-content;      /* keeps list narrow */
 }
 
-.timeline li:last-child {
-  border-bottom: 0;
-}
+.timeline li:last-child { border-bottom: 0; }
 
 .timeline li span {
+  min-width: 120px;
   font-weight: 700;
   color: #4b306a;
-  text-align: right;
+  text-align: right;        /* keeps times aligned neatly */
 }
 
 #schedule {
@@ -242,10 +238,29 @@ margin-top: -3vw;
   transform: scale(1.1);
 }
 /*WEATHER*/
-.weather-widget {
-  max-width: 500px;
-  margin: 0 auto;
+.btn-weather {
+  display: inline-block;
+  background: #2b0a52;          /* dark purple */
+  color: #d5c7f5;              /* light purple font */
+  font-weight: 700;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  transition: background 0.2s ease, transform 0.2s ease;
+  text-align: center;
 }
+
+.btn-weather:hover {
+  background: #4b306a;         /* lighter purple on hover */
+  transform: translateY(-2px);
+}
+
+.weather-widget {
+  text-align: center;           /* centers the button */
+  margin-top: 16px;
+}
+
 
 
 /* Buttons */

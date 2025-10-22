@@ -25,13 +25,59 @@ body{
 }
 
 
-/* add the missing .topnav rule */
-.topnav{
-  position:sticky; top:0; z-index:50;
-  display:flex; gap:12px; align-items:center; justify-content:space-between;
-  padding:10px 14px; background:#3b1a6a;
-  border-bottom:1px solid rgba(255,255,255,.12);
+/* make room for sticky header when jumping to anchors */
+html{ scroll-behavior:smooth; scroll-padding-top:70px; }
+
+/* Hide-on-scroll fancy nav */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.25s ease;
+
+  /* visual style */
+  background: rgba(75, 48, 106, 0.55);   /* translucent purple */
+  backdrop-filter: blur(6px);            /* frosted glass effect */
+  border-radius: 20px;
+  margin: 10px auto;
+  width: fit-content;
+  padding: 10px 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
+
+/* hidden state */
+.topnav.hide {
+  transform: translateY(-120%);
+}
+
+/* link container */
+.topnav-nav {
+  display: flex;
+  gap: 18px;
+}
+
+/* link styles */
+.topnav-nav a {
+  color: #c9a227;  /* gold */
+  text-decoration: none;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+/* hover + active styles */
+.topnav-nav a:hover,
+.topnav-nav a:focus,
+.topnav-nav a:active,
+.topnav-nav a.active {
+  color: #f5efe3;                   /* light cream */
+  background: rgba(108, 0, 231, 0.85);
+  box-shadow: 0 0 8px rgba(201, 162, 39, 0.4);
+}
+
 
 /* kill any leftover spacer */
 .spacer{display:none !important; height:0; margin:0; padding:0}
@@ -128,14 +174,7 @@ margin-top: -3vw;
   border-top: 1px solid #b9a7d8;
 }
 
-.cards-wrapper {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 250, 241, 0.88),
-    rgba(67, 0, 105, 0.88)
-  );
-  padding: 2rem;
-}
+
 
 .card {
   background: rgba(255, 250, 241, 0.85); /* light beige with transparency */
@@ -144,6 +183,9 @@ margin-top: -3vw;
   max-width: 600px;
   margin: 1rem auto;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  backdrop-filter: blur(6px);             /* softens background under card */
+  -webkit-backdrop-filter: blur(px);
+  border: 1px solid rgba(255, 255, 255, 0.25); /* prevents blue tone */
 }
 
 
@@ -261,6 +303,23 @@ margin-top: -3vw;
   margin-top: 16px;
 }
 
+/* Photos section */
+#photos {
+  text-align: center;
+}
+
+#photos .img-card {
+  width: 180px;
+  max-width: 60%;
+  border-radius: 12px;
+  margin: 16px auto;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.photo-link:hover .img-card {
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+}
 
 
 /* Buttons */

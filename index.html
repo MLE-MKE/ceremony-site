@@ -17,13 +17,12 @@
 </head>
 <body>
 <header class="topnav" role="navigation" aria-label="Primary">
-<a href="#hero" class="brand" aria-label="Home">K&E</a>
+
 <nav>
 <a href="#when-where">When & Where</a>
 <a href="#directions">Directions</a>
 <a href="#restaurant">Lunch</a>
 <a href="#lodging">Lodging</a>
-<a href="#faq">FAQ</a>
 <a href="#attire">Attire</a>
 <a href="#faq">FAQ</a>
 </nav>
@@ -136,7 +135,25 @@
 
 </section>
 
+<!--Photos-->
+<!-- POSSIBLY UPGRADE TO PRO PLAN LATER-->
+<section id="faq" class="card section">
+  <h2 class="h">PHOTOS</h2>
+  <p class="lead">
+    We are using the <strong>Kulu</strong> app to remember the night through your eyes!<br>
+    Scan the QR code to download the app now, or wait until the event.
+  </p>
 
+  <a href="https://app.kululu.com/p2wad4" target="_blank" class="photo-link">
+    <img src="images/event-qr-code.png" alt="Kulu App QR Code" class="img-card">
+  </a>
+
+  <div class="cta-row">
+    <a href="https://app.kululu.com/p2wad4" target="_blank" class="btn-weather">
+      Open Kulu App
+    </a>
+  </div>
+</section>
 
 <!-- RSVP -->
 <section id="rsvp" class="card section">
@@ -148,11 +165,36 @@
     or just to say hi
   </p>
 </section>
- <script src="script.js">!function(d,s,id){
+ <script>
+/* hide header on scroll down, show on scroll up */
+(function(){
+  const header = document.querySelector('.topnav');
+  let lastY = window.pageYOffset;
+  window.addEventListener('scroll', () => {
+    const y = window.pageYOffset;
+    if (y > lastY + 5) header.classList.add('hide');       // scrolling down
+    else if (y < lastY - 5) header.classList.remove('hide'); // scrolling up
+    lastY = y;
+  });
+})();
+
+/* set active state on click */
+document.querySelectorAll('.topnav-nav a').forEach(a=>{
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.topnav-nav a').forEach(x=>x.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+
+/* load weather widget */
+!function(d,s,id){
   let js,fjs=d.getElementsByTagName(s)[0];
   if(!d.getElementById(id)){
-    js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';
+    js=d.createElement(s);js.id=id;
+    js.src='https://weatherwidget.io/js/widget.min.js';
     fjs.parentNode.insertBefore(js,fjs);
   }
-}(document,'script','weatherwidget-io-js');</script>
+}(document,'script','weatherwidget-io-js');
+</script>
+
 </body>

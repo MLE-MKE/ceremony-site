@@ -24,8 +24,8 @@
 <a href="#restaurant">Lunch</a>
 <a href="#lodging">Lodging</a>
 <a href="#faq">FAQ</a>
-<a href="#weather">Weather</a>
 <a href="#attire">Attire</a>
+<a href="#faq">FAQ</a>
 </nav>
 </header>
 
@@ -33,21 +33,15 @@
 <main>
 <!-- HERO -->
 <section id="hero" class="hero">
-<!-- Replace images/hero.jpg with your hero photo -->
-<div class="hero-inner">
+  <div class="hero-inner">
+    <img src="images/hero-front.png" alt="Kody and Emily Konzal" class="hero-image">
 
-<img src="images/hero.png" alt="Kody and Emily Konzal" class="hero-image">
-
-<p class="date">Friday, November 21, 2025 • 11:00 AM</p>
-<div id="countdown" class="countdown" aria-live="polite"></div>
-<div class="cta-row">
-<a id="icsLink" class="btn btn-gold" download="kody-emily-ceremony.ics">Add to Calendar</a>
-</div>
-</div>
+    <div class="hero-content">
+      <h2 class="countdown-title">Count Down</h2>
+      <div id="countdown"></div>
+    </div>
+  </div>
 </section>
-
-
-<section class="spacer"></section>
 
 
 <!-- WHEN & WHERE -->
@@ -57,7 +51,10 @@
     Friday, November 21st, 2025
     <span class="chev">▾</span>   <!-- decorative chevron -->
   </p>
-  <address class="address">Our backyard, 33 Washington St, Mayville, WI</address>
+  <address class="address">Our backyard,<br> 33 Washington St, Mayville, WI</address>
+  <a class="card-link" href="https://www.google.com/maps/dir/43.4986385,-88.5397076/33+Washington+St,+Mayville,+WI+53050-1339,+USA/@43.4986089,-88.6221083,12z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x880415c6d50c42e5:0x94a1fd7fa874bd0d!2m2!1d-88.5397076!2d43.4986385?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
+  <img src="images/backyard.png" alt="backyard" class="img img-card">
+</a>
 </section>
 
 
@@ -76,15 +73,81 @@
 
 <!-- MAP / DIRECTIONS + PARKING -->
 <section id="directions" class="card section">
-<h2 class="h">MAP &amp; DIRECTIONS · </h2>
+<h2 class="h">MAP &amp; DIRECTIONS</h2>
+ <p class="lead">
+    Park on the street and head down our driveway.<br>
+    We will be carpooling to Juggs after the ceremony.
+  </p>
 </html>
+<div class="map-thumb">
+<a href="https://www.google.com/maps/dir/43.4986385,-88.5397076/33+Washington+St,+Mayville,+WI+53050-1339,+USA/@43.4986089,-88.6221083,12z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x880415c6d50c42e5:0x94a1fd7fa874bd0d!2m2!1d-88.5397076!2d43.4986385?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D"
+   target="_blank" rel="noopener"
+   class="map-icon-link">
+  <img src="images/map.png" alt="Google Maps icon" class="map-icon">
+</a>
 
-<!-- LUNCH-->
+</div>
+<div class="cta-row">
+      <a class="btn btn-gold"
+   href="https://www.google.com/maps/dir/43.4986385,-88.5397076/33+Washington+St,+Mayville,+WI+53050-1339,+USA/@43.4986089,-88.6221083,12z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x880415c6d50c42e5:0x94a1fd7fa874bd0d!2m2!1d-88.5397076!2d43.4986385?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D"
+   target="_blank"
+   rel="noopener">
+   Open Directions in Google Maps
+</a>
+</div>
+</section>
+
+<!-- LUNCH -->
+<section id="restaurant" class="card section">
+  <h2 class="h">LUNCH</h2>
+  <p class="lead">
+    Jug’s famous fish fry and our favorite! <br> They also have a variety of Wisconsin classics, and old fashioneds of course!
+  </p>
   <a class="card-link" href="https://jugshitchingpost.wordpress.com" target="_blank" rel="noopener">
-  <img src="images/jugs.png" alt="Jugs" class="img img-card">
-</a>
+    <img src="images/jugs.png" alt="Jug’s Hitching Post" class="img img-card">
+  </a>
+</section>
 
-<!-- LODGING-->
- <a class="card-link" href="https://www.hotelonthemarsh.com" target="_blank" rel="noopener">
-  <img src="images/Inn.png" alt="Audubon Inn" class="img img-card">
-</a>
+<!-- LODGING -->
+<section id="lodging" class="card section">
+  <h2 class="h">STAY A WHILE</h2>
+  <p class="lead">
+    Want to help us prepare the night before or have lunch and dinner with us? We suggest the Audubon Inn —
+    a historic, gorgeous building only a 5-minute walk from our house in the heart of downtown Mayville.
+  </p>
+  <a class="card-link" href="https://www.hotelonthemarsh.com" target="_blank" rel="noopener">
+    <img src="images/Inn.png" alt="Audubon Inn" class="img img-card">
+  </a>
+</section>
+
+<!-- ATTIRE & WEATHER -->
+<section id="attire" class="card section">
+  <h2 class="h">ATTIRE</h2>
+  <p class="lead">
+    Dress semi-formal and warmly — the ceremony will be outdoors under our covered tent. <br>
+    Wear whatever makes you comfortable, even if it is pajamas, we are just happy to have you join us. 
+  </p>
+
+  <div class="weather-widget">
+    <iframe 
+      src="https://forecast7.com/en/43d50n88d55/mayville/?unit=us"
+      frameborder="0"
+      width="100%"
+      height="250"
+      style="border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.25); margin-top:12px;">
+    </iframe>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp" class="card section">
+  <h2 class="h">RSVP</h2>
+  <p class="lead">
+    Text or call Emily or Kody with any questions.
+  </p>
+  <p style="text-align:center; font-size:12px; font-style:italic; color:#4b306a; margin-top:-4px;">
+    or just to say hi
+  </p>
+</section>
+ <script src="script.js"></script>
+</body>

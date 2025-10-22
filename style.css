@@ -11,13 +11,19 @@
   --shadow:0 12px 28px rgba(0,0,0,.22);
 }
 
-/* add body base */
+/*  body  */
 body{
   font-family:"Cormorant Garamond", ui-serif, Georgia, serif;
-  background:#f5efe3;
   color:#2b2040;
   line-height:1.45;
+
+  /* background image settings */
+  background: url('images/background.png') no-repeat center top fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #f5efe3; /* fallback color */
 }
+
 
 /* add the missing .topnav rule */
 .topnav{
@@ -27,41 +33,119 @@ body{
   border-bottom:1px solid rgba(255,255,255,.12);
 }
 
+/* kill any leftover spacer */
+.spacer{display:none !important; height:0; margin:0; padding:0}
 
-/* Hero */
+/* hero: no extra bottom band */
 .hero{
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: auto;          /* let height fit content */
+  min-height: 60vh;      /* still tall enough */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
   background:
-    linear-gradient(180deg, rgba(43,10,82,.25), rgba(43,10,82,.65)),
-    url('eimages/hero.png');      /* uses your folder */
-  background-size:cover; background-position:center;
-  color:var(--ink);
-  text-align:center;
-  padding:92px 18px 24px;
-  border-bottom:0;
+    linear-gradient(180deg, rgba(255,242,65,0.25), rgba(43,10,82,.65)),
+    url('images/hero.png');
+  background-size: cover;        /* fill the section */
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 
+/* also remove any top margin on the next section */
+.section{ margin-top: 0; }
 
+
+/* stacking context */
+.hero-inner{ position: relative; width: 100%; height: 100%; }
+
+/* front image */
+.hero img{
+  width: 55%;
+  max-width: 600px;
+  border-radius: 16px;
+margin-top: -3vw; 
+  opacity: .95;
+  transition: transform .3s ease, opacity .3s ease;
+  position: relative;
+  z-index: 1;
+}
+.hero img:hover{ transform: scale(1.02); opacity: 1; }
+
+/* centered countdown overlay */
+.hero-content{
+  position: absolute;
+  top: 69%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  color: #d4af37;
+  text-shadow: 2px 2px 8px rgba(0,0,0,.7);
+}
+
+/* headings */
 .title{font-weight:700;font-size:56px;margin:0;color:#f8e8b3;text-shadow:0 3px 10px rgba(0,0,0,.35)}
 .date{opacity:.95;margin-top:6px}
-.chev{ font-size:22px; margin-left:10px; color:#4b306a }
-.countdown{margin:14px auto 16px;display:inline-block;padding:12px 16px;border:2px solid var(--gold);border-radius:999px;background:rgba(0,0,0,.25);font-weight:700}
+.chev{font-size:22px;margin-left:10px;color:#4b306a}
 
+/* pill wrapper (optional) */
+.countdown{margin:14px auto 16px;display:inline-block;padding:12px 16px;border:2px solid #d4af37;border-radius:999px;background:rgba(0,0,0,.25);font-weight:700}
 
+/* Countdown title */
+.countdown-title{
+  font-family:"Great Vibes",cursive;
+  font-weight:500;
+  font-size:4rem;
+  letter-spacing:2px;
+  margin-bottom:0;
+  line-height:1.1;
+  color:#d4af37;
+  text-shadow:2px 2px 6px rgba(0,0,0,.6);
+}
+
+/* Countdown numbers */
+#countdown{
+  font-family:"Great Vibes",cursive;
+  font-size:3.5rem;
+  margin-top:.2rem;
+  color:#d4af37;
+}
+
+/* spacer */
 .spacer{height:22px;background:#e8ddff}
 
-/*Hero Image*/
-.hero-image {
-  width: 100%;
-  max-width: 600px;
-  border-radius: 18px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
-  margin-bottom: 16px;
-}
 
 
 /* Cards */
-.section{padding:28px 18px;max-width:920px;margin:0 auto;border-top:1px solid #b9a7d8}
-.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow)}
+.section {
+  padding: 22px 16px;           /* slightly less padding */
+  max-width: 720px;             /* narrower cards */
+  margin: 24px auto;            /* space around cards */
+  border-top: 1px solid #b9a7d8;
+}
+
+.cards-wrapper {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 250, 241, 0.88),
+    rgba(67, 0, 105, 0.88)
+  );
+  padding: 2rem;
+}
+
+.card {
+  background: rgba(255, 250, 241, 0.85); /* light beige with transparency */
+  border-radius: 10px;
+  padding: 1rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
 
 .h{
   font-weight:700; letter-spacing:.02em; color:var(--gold);
@@ -72,22 +156,96 @@ body{
 
 
 
-/* Images */
-.img{display:block;width:100%;border-radius:12px;box-shadow:var(--shadow)}
-.img-ph{display:grid;place-items:center;height:180px;background:repeating-linear-gradient(45deg,#d9c6ff 0 14px,#eadfff 14px 28px);color:#5d4a80;font-weight:600}
-.img-card{height:200px}
+/* Images – no stretch, centered, “floating” */
+.img{
+  display:block;
+  max-width:100%;
+  height:auto;               /* keeps aspect ratio */
+  border-radius:12px;
+  box-shadow:var(--shadow);
+}
+
+.img-card{
+  display:block;
+  margin:0 auto 24px;        /* center */
+  width:auto;
+  max-width:500px;           /* cap size on wide screens */
+  height:auto;               /* no fixed height */
+  object-fit:contain;        /* never crop/stretch */
+}
+
+/* optional subtle lift */
+.img-card:hover{
+  transform:translateY(-4px);
+  transition:transform .25s ease;
+}
+
 .card-link{display:block;text-decoration:none;color:inherit}
 .card-caption{text-align:center;margin-top:10px;color:var(--gold);font-weight:700}
 
 
 /* Timeline */
-.timeline{list-style:none; padding:0 18px 14px; margin:6px auto; max-width:560px;
-          border-top:1px solid #b9a7d8; border-bottom:1px solid #b9a7d8}
-.timeline li{display:flex; gap:16px; align-items:flex-start; padding:12px 0;
-             border-bottom:1px solid #b9a7d8}
-.timeline li:last-child{border-bottom:0}
-.timeline li span{min-width:120px; font-weight:700; color:#4b306a}
+.timeline {
+  list-style: none;
+  margin: 10px auto;
+  padding: 0;
+  max-width: 400px;
+  border-top: 1px solid #b9a7d8;
+  border-bottom: 1px solid #b9a7d8;
+  display: grid;
+  justify-items: center;   /* centers each row */
+  row-gap: 12px;
+  text-align: center;
+}
 
+.timeline li {
+  display: grid;
+  grid-template-columns: auto auto; /* time + event */
+  column-gap: 12px;
+  align-items: center;
+  border-bottom: 1px solid #b9a7d8;
+  padding: 10px 0;
+  width: fit-content;      /* keeps list narrow */
+}
+
+.timeline li:last-child {
+  border-bottom: 0;
+}
+
+.timeline li span {
+  font-weight: 700;
+  color: #4b306a;
+  text-align: right;
+}
+
+#schedule {
+  text-align: center;
+}
+
+
+/*MAP*/
+.map-icon-link {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.map-icon {
+  width: 48px;       /* size of icon */
+  height: 48px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.25);
+  transition: transform .2s;
+}
+
+.map-icon:hover {
+  transform: scale(1.1);
+}
+/*WEATHER*/
+.weather-widget {
+  max-width: 500px;
+  margin: 0 auto;
+}
 
 
 /* Buttons */

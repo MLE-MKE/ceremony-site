@@ -17,7 +17,7 @@ setInterval(tick, 30000);
 })();
 
 
-// Build minimal ICS with DTSTART only (no end time, no timezone label on page)
+// Build minimal ICS with DTSTART only (no end time)
 (function(){
 const link = document.getElementById('icsLink');
 if(!link) return;
@@ -36,7 +36,8 @@ const ics = [
 `LOCATION:${location}`,
 `DESCRIPTION:${description}`,
 'END:VEVENT','END:VCALENDAR'
-].join('\r\n');
+].join('
+');
 const blob = new Blob([ics], {type:'text/calendar'});
 link.href = URL.createObjectURL(blob);
 })();

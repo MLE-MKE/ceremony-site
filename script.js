@@ -1,4 +1,8 @@
+/* get out of here this is my messy timer*/
+/*how did you even get here?*/
+
 // Countdown to 11:00 AM, Nov 21, 2025 (local time)
+
 (function () {
     const target = new Date(2025, 10, 21, 11, 0, 0); // month is 0-indexed
     const el = document.getElementById('countdown');

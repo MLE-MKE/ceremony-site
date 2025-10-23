@@ -366,6 +366,10 @@ summary{cursor:pointer;font-weight:700;color:#2b2040}
   }
   .title { font-size: 72px; }
   /* remove this → height:240px */
+     .card {
+    max-width: 720px;
+  }
+
 }
 
 /* Mobile */
@@ -380,4 +384,10 @@ summary{cursor:pointer;font-weight:700;color:#2b2040}
     object-fit: contain; /* no cropping */
     display: block;
   }
+    .card {
+    max-width: 95%;
+    margin: 1rem auto;
+    padding: 0.8rem;
+  }
+
 }

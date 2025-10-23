@@ -192,14 +192,18 @@ margin-top: -8vw;
   backdrop-filter: blur(6px);             /* softens background under card */
   -webkit-backdrop-filter: blur(px);
   border: 1px solid rgba(255, 255, 255, 0.25); /* prevents blue tone */
+  height: auto;              /* allow content to set height */
+  aspect-ratio: auto;        /* remove square constraint */
 }
+.card .media { height: auto; }
+
 .card img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 0%; /* card controls the curve*/
   max-width: 100%;
-  object-fit: cover;  
+  object-fit: contain;  
 }
 
 .h{
@@ -354,12 +358,26 @@ summary{cursor:pointer;font-weight:700;color:#2b2040}
 .footer{padding:34px 18px;text-align:center;color:var(--ink-2);font-size:14px}
 
 
-/* Responsive */
+/* Desktop */
 @media (min-width:720px){
   .img-card {
     max-width: 90%;
     margin: 0 auto 16px;
   }
-.title{font-size:72px}
-.img-card{height:240px}
+  .title { font-size: 72px; }
+  /* remove this → height:240px */
+}
+
+/* Mobile */
+@media (max-width:719px){
+  .img-card {
+    width: 100%;
+    height: auto;        /* grow with image */
+  }
+  .img-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* no cropping */
+    display: block;
+  }
 }

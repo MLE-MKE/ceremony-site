@@ -49,7 +49,7 @@ html{ scroll-behavior:smooth; scroll-padding-top:70px; }
 
 /* hidden state */
 .topnav.hide {
-  transform: translateY(-120%);
+  transform: translateY(-100%);
 }
 
 /* link container */

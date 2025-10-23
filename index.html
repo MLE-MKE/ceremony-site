@@ -36,8 +36,14 @@
     <img src="images/hero-front.png" alt="Kody and Emily Konzal" class="hero-image">
 
     <div class="hero-content">
+      <!--Countdown-->
       <h2 class="countdown-title">Count Down</h2>
-      <div id="countdown"></div>
+      <div id="countdown" aria-live="polite">
+  <span data-unit="days">00</span>d
+  <span data-unit="hours">00</span>h
+  <span data-unit="minutes">00</span>m
+  <span data-unit="seconds">00</span>s
+</div>
     </div>
   </div>
 </section>
@@ -165,28 +171,70 @@
     or just to say hi
   </p>
 </section>
- <script>
-/* hide header on scroll down, show on scroll up */
-(function(){
+
+
+ <script defer>
+/* === Hide header on scroll === */
+(function () {
   const header = document.querySelector('.topnav');
-  let lastY = window.pageYOffset;
+  if (!header) return;
+  let lastY = window.pageYOffset || 0;
   window.addEventListener('scroll', () => {
-    const y = window.pageYOffset;
-    if (y > lastY + 5) header.classList.add('hide');       // scrolling down
-    else if (y < lastY - 5) header.classList.remove('hide'); // scrolling up
+    const y = window.pageYOffset || 0;
+    if (y > lastY + 5) header.classList.add('hide');        // down
+    else if (y < lastY - 5) header.classList.remove('hide'); // up
     lastY = y;
+  }, { passive: true });
+})();
+
+/* === Set active state on click === */
+(function () {
+  const links = document.querySelectorAll('.topnav nav a, .topnav-nav a');
+  if (!links.length) return;
+  links.forEach(a => {
+    a.addEventListener('click', () => {
+      links.forEach(x => x.classList.remove('active'));
+      a.classList.add('active');
+    });
   });
 })();
 
-/* set active state on click */
-document.querySelectorAll('.topnav-nav a').forEach(a=>{
-  a.addEventListener('click', () => {
-    document.querySelectorAll('.topnav-nav a').forEach(x=>x.classList.remove('active'));
-    a.classList.add('active');
-  });
-});
+/* === Countdown (Nov 21, 2025 11:00 AM America/Chicago) === */
+(function () {
+  const root = document.getElementById('countdown');
+  if (!root) return; // safe if the widget isn't on this page
+  const el = {
+    d: root.querySelector('[data-unit="days"]'),
+    h: root.querySelector('[data-unit="hours"]'),
+    m: root.querySelector('[data-unit="minutes"]'),
+    s: root.querySelector('[data-unit="seconds"]')
+  };
+  const target = new Date('2025-11-21T11:00:00-06:00'); // CST
 
-/* load weather widget */
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    const diff = target - new Date();
+    if (diff <= 0){
+      root.textContent = 'Today';
+      clearInterval(timer);
+      return;
+    }
+    const t = Math.floor(diff/1000);
+    const days = Math.floor(t/86400);
+    const hours = Math.floor((t%86400)/3600);
+    const minutes = Math.floor((t%3600)/60);
+    const seconds = t%60;
+
+    if (el.d) el.d.textContent = pad(days);
+    if (el.h) el.h.textContent = pad(hours);
+    if (el.m) el.m.textContent = pad(minutes);
+    if (el.s) el.s.textContent = pad(seconds);
+  }
+  tick();
+  const timer = setInterval(tick, 1000);
+})();
+
+/* === Weather widget === */
 !function(d,s,id){
   let js,fjs=d.getElementsByTagName(s)[0];
   if(!d.getElementById(id)){
@@ -196,5 +244,6 @@ document.querySelectorAll('.topnav-nav a').forEach(a=>{
   }
 }(document,'script','weatherwidget-io-js');
 </script>
+
 
 </body>
